@@ -1,0 +1,12 @@
+# ignore all .log files
+*.log
+launch
+
+# ignore All files in any directory named creds
+creds/postgres_db.py
+
+__pycache__/
+
+
+
+

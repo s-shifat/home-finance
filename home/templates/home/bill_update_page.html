@@ -1,0 +1,31 @@
+{% include 'home/base.html' %}
+{% load mathfilters %}
+
+
+<div class="container">
+	<div class="row justify-content-center m-5">
+		<div class="col m-2">
+			<h1>{{bill.name}} of {{bill.due_date | date:"M-Y"}}</h1>
+		</div>
+	</div>
+	<div class="row justify-content-center">
+		<div class="col col-lg-12 mx-2">
+			<div class="row my-1"> Bill: {{bill.name}} </div>
+			<div class="row fg-primary my-1"> Amount: {{bill.amount}}/-</div>
+			<div class="row fg-primary my-1"> Already Paid: {{bill.paid_amount}}/-</div>
+			<div class="row my-1"> Payable: {{bill.amount|sub:bill.paid_amount}}/-</div>
+		</div>
+		<div class="col col-lg-12">
+			<div class="row-2 my-1"><strong>{{request.user}}</strong> is paying (BDT):</div>
+			<div class="row my-1">
+			<form method="post">{% csrf_token %}
+				{%for field in form%}
+				<div class="form-group col-lg-5">
+				{{field}}
+				</div>
+				{% endfor%}
+				<button class="btn btn-primary my-4" type="submit">Submit</button>
+		</form>
+		</div>
+	</div>
+</div>
