@@ -1,7 +1,13 @@
 {% include 'home/base.html' %}
 {% load mathfilters %}
 
-<div class="my-5 px-4"><h1>Hi. {{request.user}}</h1></div>
+<div class="container">
+	<div class="row m-4">
+		<div class="col-12" align="center">
+			<h1>Bills of {{today.month}}</h1>
+		</div>
+	</div>
+</div>
 <div class="container">
 <div class="row my-1">
 {% for bill in bills %}

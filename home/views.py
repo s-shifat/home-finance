@@ -13,8 +13,8 @@ from django import forms
 def home_page(request):
     today = dt.now(timezone('Asia/Dhaka'))
     time_yes = f"{today.day}/{today.month}/{today.year} at {today.hour}:{today.minute}"
-    bills = Bill.objects.all()
-    context = {'time_yes': time_yes, 'bills': bills}
+    bills = Bill.objects.filter(due_date__month=today.month, due_date__year=today.year).order_by('-amount','due_date')
+    context = {'today': today, 'bills': bills}
     return render(request, 'home/dashboard.html', context=context)
 
 
