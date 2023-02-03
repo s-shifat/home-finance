@@ -1,6 +1,9 @@
 from django import forms
 from .models import Bill, BillTransaction
 
+
+# Updating bill doesn't work properly. It adds the paid amount
+
 class BillTransactionForm(forms.ModelForm):
     class Meta:
         model = BillTransaction
@@ -8,5 +11,15 @@ class BillTransactionForm(forms.ModelForm):
         widgets = {
                 'paid_amount': forms.NumberInput(attrs={'class':'form-control'})
         }
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+
+
+    def save(self):
+        data = self.cleaned_data
+        bill = self.instance.bill
+        user = self.instance.paid_by
+        paid_amount = data['paid_amount']
+        #bill.payers = f"{bill.payers}, {user.username}" if bill.payers else user.username
+        #bill.save()
+        bill_tx = BillTransaction.objects.create(paid_amount=paid_amount, bill=bill, paid_by=user)
+
+

@@ -20,7 +20,7 @@
 			<div class="row my-1">
 			<form method="post">{% csrf_token %}
 				{%for field in form%}
-					<div class="form-group col-lg-5"> {{field}} </div>
+					<div class="form-group col-lg-5" name="paid_amount"> {{field}} </div>
 				{% endfor%}
 				{% if form.errors %}
 					{% for field in form %}

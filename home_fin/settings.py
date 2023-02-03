@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 from creds.postgres_db import MY_DB_CONFIG
+import pytz
 #from creds.sqlite_db import MY_DB_CONFIG
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -107,7 +108,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Dhaka'
 
 USE_I18N = True
 
