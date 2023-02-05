@@ -9,15 +9,24 @@ from .forms import BillTransactionForm
 from pytz import timezone
 from django import forms
 from .bills_updater import get_bills
+import calendar
+
 
 
 # Create your views here.
 @login_required(login_url='login')
 def home_page(request):
     today = dt.now(timezone('Asia/Dhaka'))
+    month = calendar.month_name[today.month]
     bill_model = get_bills(model=Bill)
     bills = bill_model.objects.filter(due_date__month=today.month, due_date__year=today.year).order_by('-amount','due_date')
-    context = {'today': today, 'bills': bills}
+    tx_data = {}
+    for bill in bills:
+        transactions = BillTransaction.objects.filter(bill=bill).order_by('-date')
+        tx_data[bill.id] = transactions
+
+    print("trasactions:",tx_data)
+    context = {'today': today, 'month': month, 'bills': bills, 'tx_data':tx_data}
     return render(request, 'home/dashboard.html', context=context)
 
 
@@ -40,36 +49,3 @@ def bill_update_page(request, pk):
         'form': form
     }
     return render(request, 'home/bill_update_page.html', context=context)
-
-#@login_required(login_url='login')
-#def bill_update_page(request, pk):
-#    bill = Bill.objects.get(id=pk)
-#    form = BillTransactionForm(request.POST or None)
-#    if form.is_valid():
-#        form = form.save(commit=False)
-#        paid_amount = form.paid_amount
-#        if paid_amount + bill.paid_amount > bill.amount:
-#            form = BillTransactionForm()
-#            return render(request, 'home/error_page.html', context={'paid_bill': paid_amount, 'required_bill': bill.amount-bill.paid_amount, 'id': pk})
-#        elif paid_amount + bill.paid_amount == bill.amount:
-#            bill.status = True
-#            bill.clearance_date = dt.now()
-#            bill.save()
-#        form.bill = bill
-#        form.paid_by = request.user
-#        form.save()
-#        # update the Bill data also
-#        paid_amount = BillTransaction.objects.filter(bill=bill).aggregate(Sum('paid_amount'))['paid_amount__sum']
-#        bill_payers = BillTransaction.objects.filter(bill=bill).values_list('paid_by__username', flat=True)
-#        bill.paid_amount = paid_amount
-#        bill.payers = ', '.join(list(bill_payers)) or request.user.username
-#        bill.save()
-#        return redirect('dashboard')
-#
-#    context = {
-#        'bill': bill,
-#        'form': form
-#    }
-#    return render(request, 'home/bill_update_page.html', context=context)
-#
-
