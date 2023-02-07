@@ -17,10 +17,29 @@ class Bill(models.Model):
     name = models.CharField(max_length=40, blank=False)
     amount = models.DecimalField(default=0, max_digits=8, decimal_places=2, blank=False)
     paid_amount = models.DecimalField(default=0, max_digits=8, decimal_places=2)
-    payers = models.CharField(max_length=200, default='', blank=True)
     due_date = models.DateField(blank=False)
     status = models.BooleanField(default=False)
     clearance_date = models.DateField(blank=True, null=True)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    @property
+    def paid_fraction(self):
+        return 1- ((self.amount - self.paid_amount) / self.amount)
+
+    @property
+    def paid_percentage(self):
+        return round(self.paid_fraction * 100, 2)
+
+    @property
+    def transactions(self):
+        return BillTransaction.objects.filter(bill=self).order_by('-date')
+
+    @property
+    def payers(self):
+        payers = self.transactions.values_list('paid_by__username', flat=True)
+        return ','.join(payers)
 
     def clean(self, *args, **kwargs):
         if self.paid_amount > self.amount:
@@ -34,7 +53,7 @@ class Bill(models.Model):
 
     def save(self, *args, **kwargs):
         self.full_clean()
-        super().save(*args, **kwargs)
+        return super().save(*args, **kwargs)
 
 
     def __str__(self):
@@ -61,7 +80,7 @@ class BillTransaction(models.Model):
 #        self.bill.paid_amount += self.paid_amount
         already_paid = BillTransaction.objects.filter(bill=self.bill).aggregate(Sum('paid_amount'))['paid_amount__sum']
         self.bill.paid_amount = (already_paid or 0) + self.paid_amount
-        self.bill.payers = f"{self.bill.payers}, {self.paid_by.username}" if self.bill.payers else self.paid_by.username
+        #self.bill.payers = f"{self.bill.payers}, {self.paid_by.username}" if self.bill.payers else self.paid_by.username
         self.bill.save()
         return super(BillTransaction, self).save(*args, **kwargs)
 
@@ -70,4 +89,3 @@ class BillTransaction(models.Model):
         month = datetime.strftime(self.bill.due_date, "%B")
         year = self.bill.due_date.year
         return f"{self.bill.name} - {month} - {year} by {self.paid_by}"
-

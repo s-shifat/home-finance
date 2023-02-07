@@ -19,14 +19,9 @@ def home_page(request):
     today = dt.now(timezone('Asia/Dhaka'))
     month = calendar.month_name[today.month]
     bill_model = get_bills(model=Bill)
-    bills = bill_model.objects.filter(due_date__month=today.month, due_date__year=today.year).order_by('-amount','due_date')
-    tx_data = {}
-    for bill in bills:
-        transactions = BillTransaction.objects.filter(bill=bill).order_by('-date')
-        tx_data[bill.id] = transactions
+    bills = bill_model.objects.filter(due_date__month=today.month, due_date__year=today.year).order_by('status', '-amount','due_date')
 
-    print("trasactions:",tx_data)
-    context = {'today': today, 'month': month, 'bills': bills, 'tx_data':tx_data}
+    context = {'today': today, 'month': month, 'bills': bills}
     return render(request, 'home/dashboard.html', context=context)
 
 
