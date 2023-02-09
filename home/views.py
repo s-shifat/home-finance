@@ -24,6 +24,11 @@ def home_page(request):
     context = {'today': today, 'month': month, 'bills': bills}
     return render(request, 'home/dashboard.html', context=context)
 
+@login_required(login_url='login')
+def bill_adjust_page(request, pk):
+    context = {}
+    return render(request, 'home/bill_adjust_page.html', context=context)
+
 
 @login_required(login_url='login')
 def bill_update_page(request, pk):

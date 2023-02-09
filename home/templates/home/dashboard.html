@@ -11,80 +11,10 @@
 <div class="container">
 <div class="row my-1">
 {% for bill in bills %}
-    <div class="col-lg-12 col-xs-12 my-2">
-	    <div class="card" width="100%">
-		<div class="progress">
-			<div class="progress-bar" style="width: {{bill.paid_percentage}}%" role="progressbar" aria-valuenow="{{bill.paid_percentage}}" aria-valuemin="0" aria-valuemax="100">{{bill.paid_percentage}}%</div>
-		</div>
-		<div class="card-body">
-		<h5 class="card-title">{{bill.name}}</h5>
-		<h6 class="card-subtitle mb-2 text-muted">{{bill.amount}} /-</h6>
-		<p class="card-text">
-		<ul class="px-3">
-			<li>Due: <i>{{bill.due_date}}</i></li>
-		<li>Status:
-			Total {{bill.paid_amount}}/- Paid by <i>{{bill.payers}}</i></li>
-		{% if bill.status %}
-		{% for x in bill.payers_list %}
-		<li>{{x}}<li>
-		{% endfor %}
-		<li><i>cleared</i> on {{bill.clearance_date}}</li>
-		{%else%}
-			<li><i>{{bill.amount|sub:bill.paid_amount}}/- Due</i></li>
-		{% endif%}
-		</ul>
-		</p>
-	
-		<!-- <a href="#" class="card-link">Clear</a-->
-		{% if bill.status %}
-		<a href="#" class="btn btn-success">Cleared!</a>
-		{% else %}
-		       <a href="{% url 'bill_update_page' bill.id %}" class="btn btn-primary">Pay</a>
-		{% endif %}
-		<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#Tx-data-{{bill.id}}" style="color:white;">
-  See Contributions
-</button>
-	  </div>
-	</div>
-    </div>
-
-
-<!-- Modal -->
-<div class="modal fade" id="Tx-data-{{bill.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Contributions</h5>
-        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-	      <table class="table table-striped">
-		      <thead>
-			      <tr>
-				      <th scope="col">Contributor</th>
-				      <th scope="col">Amount (BDT)</th>
-				      <th scope="col">Date</th>
-			      </tr>
-		      </thead>
-		      <tbody>
-		    {% for transaction in bill.transactions %}
-		      <tr>
-			      <th scope="row">{{transaction.paid_by}}</th>
-			      <td>{{transaction.paid_amount}}</td>
-			      <td>{{transaction.date}}</td>
-		      </tr>
-		    {% endfor%}
-		      </tbody>  
-	      </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
-      </div>
-    </div>
-  </div>
-</div>
+	<!--Cards Per Row-->
+	{% include 'home/dashboard-card.html' %}
+	<!-- Modal -->
+	{% include 'home/dashboard-modal.html' %}
 {% endfor %}
   </div>
 </div>
