@@ -1,0 +1,62 @@
+body {
+	background-color: #D9D7F1;
+	background-color: #E5EDC4;
+	background-color: #FFC6D3;
+	background-color: #ffe0e8;
+}
+
+h1 {
+	color: #3A4F7A;
+}
+
+.bg-main {
+	background-color: #D9D7F1;
+}
+
+.bg-card {
+	background-color: #fffdd6;
+}
+
+.bg-progress {
+	background-color: #FAF8F1;
+}
+
+.fg-progress {
+	color: #743C08;
+}
+
+.bg-progress-not-paid {
+	background-color: #FAEAB1;
+}
+
+.bg-progress-paying {
+	background-color: #E5BA73;
+}
+
+.bg-progress-paid {
+	background-color: #C58940;
+}
+
+.btn-pay {
+	background-color: #7BC67B;
+	border-color: #7BC67B;
+}
+
+.btn-pay-outline {
+	border-color: #7BC67B;
+}
+
+.btn-paid {
+	background-color: #6B8C42;
+	border-color: #6B8C42;
+}
+
+.btn-paid-outline {
+	border-color: #6B8C42;
+}
+
+.bg-nav-yo {
+	background-color: #4E2161;
+	background-color: #934662;
+	background-color: #3A4F7A;
+}

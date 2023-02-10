@@ -2,26 +2,23 @@
 
 <!-- Card Per Row -->
 <div class="col-lg-6 col-xs-12 my-2">
-	<div class="card" width="100%">
+	<div class="card bg-card" width="100%">
 		<h3 class="card-header">{{bill.name}}</h3>
 		<!-- Card Body-->
 		<div class="card-body">
 			<h5 class="card-title">{{bill.amount}}/-</h5>
 			<!--Card Text-->
 			<h6 class="card-subtitle mb-2 text-muted"><i>{{bill.amount|sub:bill.paid_amount}}/- Due before {{bill.due_date}}</i></h6>
-			{% if bill.status %}
-			<h6 class="card-subtitle mb-2">  <i>cleared</i> on {{bill.clearance_date}}  </h6>
-			{% endif%}
 			<!-- Progress Bar -->
-			<div class="progress my-1" style="Height:30px">
+			<div class="progress my-1 bg-progress-not-paid" style="Height:30px">
 				{% if bill.paid_percentage == 100 %}
-				<div class="progress-bar progress-bar-striped bg-success" style="width: {{bill.paid_percentage}}%" role="progressbar" aria-valuenow="{{bill.paid_percentage}}" aria-valuemin="0" aria-valuemax="100">
+				<div class="progress-bar bg-progress-paid fg-progress" style="width: {{bill.paid_percentage}}%" role="progressbar" aria-valuenow="{{bill.paid_percentage}}" aria-valuemin="0" aria-valuemax="100">
 				{% elif bill.paid_percentage == 0 %}
-				<div class="progress-bar progress-bar-striped bg-secondary" style="width: 100%" role="progressbar" aria-valuenow="{{bill.paid_percentage}}" aria-valuemin="0" aria-valuemax="100">
+				<div class="progress-bar bg-progress-not-paid" style="width: 100%" role="progressbar" aria-valuenow="{{bill.paid_percentage}}" aria-valuemin="0" aria-valuemax="100">
 				{% else %}
-				<div class="progress-bar progress-bar-striped progress-bar-animated" style="width: {{bill.paid_percentage}}%" role="progressbar" aria-valuenow="{{bill.paid_percentage}}" aria-valuemin="0" aria-valuemax="100">
+				<div class="progress-bar bg-progress-paying fg-progress" style="width: {{bill.paid_percentage}}%" role="progressbar" aria-valuenow="{{bill.paid_percentage}}" aria-valuemin="0" aria-valuemax="100">
 				{% endif %}
-					<div class="p-1 text-center" style="font-weight:bold; font-size:15px;">
+					<div class="p-1 text-center fg-progress" style="font-weight:bold; font-size:15px;">
 						Total {{bill.paid_amount}}/- Paid
 						{% if bill.payers%}
 						by <i>{{bill.payers}}</i>
@@ -36,11 +33,13 @@
 			<!--Buttons-->
 			<div class="btn-group" style="width:100%;">
 			{% if bill.status %}
-				<a href="#" class="btn btn-success disabled" style="width:90%">Cleared!</a>
-				<button type="button" class="btn btn-outline-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+				<button class="btn btn-paid disabled" style="width:90%">
+					Cleared on {{bill.clearance_date}}
+				</button>
+				<button type="button" class="btn btn-paid-outline dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
 			{% else %}
-				<a href="{% url 'bill_update_page' bill.id %}" class="btn btn-primary" style="width:90%">Pay</a>
-				<button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+				<a href="{% url 'bill_update_page' bill.id %}" class="btn btn-pay" style="width:90%">Pay</a>
+				<button type="button" class="btn btn-pay-outline dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
 			{% endif %}
 					<span class="visually-hidden">Toggle Dropdown</span>
 				</button>
