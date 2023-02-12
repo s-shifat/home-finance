@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'mathfilters',
     'home',
     'accounts',
+    'personal_expense',
+    'todo',
 ]
 
 MIDDLEWARE = [
