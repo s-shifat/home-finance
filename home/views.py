@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.db.models import Sum
 from datetime import datetime as dt
 from .models import Bill, BillTransaction
-from .forms import BillTransactionForm
+from .forms import BillTransactionForm, BillForm
 from pytz import timezone
 from django import forms
 from .bills_updater import get_bills
@@ -26,7 +26,12 @@ def home_page(request):
 
 @login_required(login_url='login')
 def bill_adjust_page(request, pk):
-    context = {}
+    bill = Bill.objects.get(pk=pk)
+    form = BillForm(request.POST or None, instance=bill)
+    if form.is_valid():
+        form.save()
+        return redirect('dashboard')
+    context = {'bill': bill, 'form': form}
     return render(request, 'home/bill_adjust_page.html', context=context)
 
 

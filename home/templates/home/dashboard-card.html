@@ -18,7 +18,7 @@
 				{% else %}
 				<div class="progress-bar bg-progress-paying fg-progress" style="width: {{bill.paid_percentage}}%" role="progressbar" aria-valuenow="{{bill.paid_percentage}}" aria-valuemin="0" aria-valuemax="100">
 				{% endif %}
-					<div class="p-1 text-center fg-progress" style="font-weight:bold; font-size:15px;">
+					<div class="p-1 text-center fg-progress text-truncate" style="font-weight:bold; font-size:15px;">
 						Total {{bill.paid_amount}}/- Paid
 						{% if bill.payers%}
 						by <i>{{bill.payers}}</i>
