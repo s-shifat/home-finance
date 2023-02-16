@@ -1,0 +1,53 @@
+<!--expense_form-->
+<div class="col">
+	<form method="post">{%csrf_token%}
+		<div class="row mt-5">
+			<div class="col-lg-4 col-sm-12 col-12 mt-3">
+				<label for="{{expense_form.item_name.id_for_label}}">Item</label>
+				{{expense_form.item_name}}
+			</div>
+			<div class="col-lg-4 col-sm-6 col-6 mt-3">
+				<label for="{{expense_form.cost.id_for_label}}">Cost (BDT)</label>
+				{{expense_form.cost}}
+			</div>
+			<div class="col-lg-4 col-sm-6 col-6 mt-3">
+				<label for="{{expense_form.category.id_for_label}}">Category</label>
+				{{expense_form.category}}
+			</div>
+		</div>
+		<div class="row justify-content-between my-3">
+			<button type="submit" class="btn btn-pay col-4 mx-3">Submit</button>
+			<button type="button" class="btn btn-pay col-4 mx-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Add New Category</button>
+		</div>
+	</form>
+</div>
+
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create New Category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+	<!--category_form-->
+	<form method="post">{%csrf_token%}
+      <div class="modal-body">
+		<label for="{{category_form.item_name.id_for_label}}">Category</label>
+		{{category_form.item_name}}
+		<br>
+		<label for="{{category_form.item_name.id_for_label}}">Description (Optional)</label>
+		{{category_form.description}}
+      </div>
+      <div class="modal-footer">
+		<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		<button type="submit" class="btn btn-pay">Submit</button>
+	</form>
+      </div>
+    </div>
+  </div>
+</div>
+

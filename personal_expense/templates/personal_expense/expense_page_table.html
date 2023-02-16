@@ -1,0 +1,32 @@
+{% if expenses %}
+<div class="col my-5 bg-card table-responsive border" >
+	<table class="table table-sm table-hover align-middle table-striped">
+		<thead class="align-middle">
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Item</th>
+				<th scope="col">Cost (BDT)</th>
+				<th scope="col">Category</th>
+				<th scope="col">Date</th>
+			
+			</tr>
+		</thead>
+		<tbody>
+		{% for expense in expenses %}
+			<tr>
+				<th scope="row">{{forloop.counter}}</th>
+				<td>{{ expense.item_name }}</td>
+				<td>{{ expense.cost }}</td>
+				<td>{{ expense.category }}</td>
+				<td>{{ expense.date | date:'P, D, d M Y'}}</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+	{% else %}
+		<p class="text-center">
+			It's empty here.<br>
+			You haven't use your wallet, did you?
+		</p>
+	{% endif%}
+</div>

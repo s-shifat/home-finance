@@ -28,7 +28,7 @@ class BillForm(forms.ModelForm):
         model = Bill
         fields = ('amount', 'due_date')
         widgets = {
-            'amount': forms.NumberInput(attrs={'class':'form-control', 'type': 'number', 'id':'amount', 'step': '50'}),
+            'amount': forms.NumberInput(attrs={'class':'form-control', 'type': 'number', 'id':'amount', 'step': '1'}),
             'due_date': forms.DateInput(attrs={'class':'form-control', 'type':'date', 'id':'due-date'}),
     }
 
