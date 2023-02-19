@@ -1,0 +1,23 @@
+<div class="card bg-card my-2">
+	<form method="post">{% csrf_token %}
+		<div class="card-body row justify-content-between">
+
+			<h5>Add new task</h5>
+			<div class="col-12 col-lg-8 my-2">
+				{{task_form.item_name}}
+			</div>
+
+			<div class="col-6 col-lg-2 my-2">
+				<a class="btn btn-warning" href="{% url 'todo' %}">
+					<i class="fa fa-arrow-left"></i> Back to List
+				</a>
+			</div>
+
+			<div class="col-6 col-lg-2 my-2">
+				<button class="btn btn-primary" type="submit">
+					<i class="fa fa-plus-circle"></i> ADD
+				</button>
+			</div>
+		</div>
+	</form>
+</div>

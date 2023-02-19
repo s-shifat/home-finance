@@ -1,0 +1,33 @@
+{% include 'home/base.html' %}
+
+<h1 class="text-center m-5">Todo Lists</h1>
+<div class="container">
+	{% include 'todo/todo_add_list.html' %} 
+	{% for todo_list in todo_lists %}
+	<div class="card bg-card my-2">
+		<div class="card-body row">
+
+			<div class="col-12 col-lg-8 my-2">
+			<h5 class="card-title">{{ todo_list.list_name }}</h5>
+			<p class="card-text">Created on {{todo_list.creation_time}}</p>
+			</div>
+
+			<div class="col-6 col-lg-2 my-2">
+			<a class="btn btn-success" href="{% url 'tasks' todo_list.pk%}">
+				<i class="fa fa-list-alt"></i>
+				See Tasks
+			</a>
+			</div>
+
+			<div class="col-6 col-lg-2 my-2">
+				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+					Delete
+				</button>
+				{% include 'todo/todo_delete_list.html' %}
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+
+
