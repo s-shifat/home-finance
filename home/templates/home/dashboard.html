@@ -1,6 +1,12 @@
 {% include 'home/base.html' %}
 {% load mathfilters %}
 
+<!--TODO: USE PLOTLY JS CDN INSTEAD! -->
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
+
+
 <div class="container">
 	<div class="row m-4">
 		<div class="col-12" align="center">
@@ -8,6 +14,14 @@
 		</div>
 	</div>
 </div>
+
+<!-- Charts-->
+<div class="container">
+	<canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+</div>
+<!-- END Charts-->
+
+
 <div class="container">
 <div class="row my-1">
 {% for bill in bills %}
@@ -19,5 +33,49 @@
   </div>
 </div>
 
+
+<script>
+function rgb(r,g,b) {
+	return 'rgb(' + [(r||0),(g||0),(b||0)].join(',') + ')';
+}
+var data = {
+    labels: [
+        'Total Paid',
+        'Total Due',
+    ],
+
+    datasets: [{
+	label: "Summary",
+        data: [{{total_paid}}, {{total_not_paid}}],
+	backgroundColor: [
+		rgb(164, 205, 86),
+		rgb(255, 114, 111),
+	]
+    }],
+
+};
+
+var options = {
+	cutoutPercentage: 50,
+	title: {
+		text: "Total Bills",
+		display: true,
+		position: "top",
+		fontSize: 24
+	},
+
+	legend: {
+		position: "bottom",
+	},
+}
+
+
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+  type: "doughnut",
+  data: data,
+  options: options,
+});
+</script>
 
 

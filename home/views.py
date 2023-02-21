@@ -9,6 +9,9 @@ from .forms import BillTransactionForm, BillForm
 from pytz import timezone
 from django import forms
 from .bills_updater import get_bills
+#import pandas as pd
+#import numpy as np
+#import plotly.express as px
 import calendar
 
 
@@ -20,8 +23,12 @@ def home_page(request):
     month = calendar.month_name[today.month]
     bill_model = get_bills(model=Bill)
     bills = bill_model.objects.filter(due_date__month=today.month, due_date__year=today.year).order_by('status', '-amount','due_date')
-
-    context = {'today': today, 'month': month, 'bills': bills}
+    total_bill_amount = bills.aggregate(total_bill=Sum('amount'))['total_bill']
+    total_bill_amount_paid = bills.aggregate(total_bill_paid=Sum('paid_amount'))['total_bill_paid']
+    total_bill_amount_not_paid = total_bill_amount - total_bill_amount_paid
+#    fig = px.pie(names=['Bills Paid', 'Bills Not Paid'], values=[total_bill_amount_paid, total_bill_amount_not_paid], hole=0.75)
+    #context = {'today': today, 'month': month, 'bills': bills, 'fig': fig.to_html()}
+    context = {'today': today, 'month': month, 'bills': bills, 'total_paid': total_bill_amount_paid, 'total_not_paid': total_bill_amount_not_paid}
     return render(request, 'home/dashboard.html', context=context)
 
 @login_required(login_url='login')
