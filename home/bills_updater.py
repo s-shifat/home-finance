@@ -12,7 +12,6 @@ BILL_DATA = {
             'paid_amount': 0,
             'status': False,
             'clearance_date': None,
-            'payers': ''
         },
         'Home Maid': {
             'amount': 2500,
@@ -20,7 +19,6 @@ BILL_DATA = {
             'paid_amount': 0,
             'status': False,
             'clearance_date': None,
-            'payers': ''
         },
         'Gas': {
             'amount': 1450,
@@ -28,7 +26,6 @@ BILL_DATA = {
             'paid_amount': 0,
             'status': False,
             'clearance_date': None,
-            'payers': ''
         },
         'Internet': {
             'amount': 1200,
@@ -36,7 +33,7 @@ BILL_DATA = {
             'paid_amount': 0,
             'status': False,
             'clearance_date': None,
-            'payers': ''
+        
         },
         'TV': {
             'amount': 400,
@@ -44,7 +41,7 @@ BILL_DATA = {
             'paid_amount': 0,
             'status': False,
             'clearance_date': None,
-            'payers': ''
+       
         },
         'Garbage': {
             'amount': 150,
@@ -52,7 +49,7 @@ BILL_DATA = {
             'paid_amount': 0,
             'status': False,
             'clearance_date': None,
-            'payers': ''
+      
         },
         'Electricity': {
             'amount': 1500,
@@ -60,7 +57,7 @@ BILL_DATA = {
             'paid_amount': 0,
             'status': False,
             'clearance_date': None,
-            'payers': ''
+     
         },
 }
 
@@ -70,7 +67,6 @@ def add_new_bills(model=Bill):
                 name=name,
                 amount=data['amount'],
                 paid_amount=data['paid_amount'],
-                payers=data['payers'],
                 due_date=data['due_date'],
                 status=data['status'],
                 clearance_date=data['clearance_date']
@@ -83,8 +79,4 @@ def get_bills(model=Bill):
     if new_month:
         add_new_bills(model)
     return model
-
-
-
-
 
