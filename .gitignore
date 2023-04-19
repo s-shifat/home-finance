@@ -4,9 +4,7 @@ launch
 
 # ignore All files in any directory named creds
 creds/postgres_db.py
-
+home_fin/settings.py
 __pycache__/
-
-
-
-
+*/migrations/
+sqlite3.db
