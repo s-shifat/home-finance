@@ -2,6 +2,13 @@
 
 A nifty web app to keep track of my home's monthly expenses and some personal utility.
 
+## Tech stack
+
+1. Django
+2. PostgreSQL
+3. Bootstrap
+
+Developed and hosted on Raspberry Pi 4
 
 ## Features
 
@@ -10,7 +17,16 @@ A nifty web app to keep track of my home's monthly expenses and some personal ut
 * Personal expenses records
 * Personal TODO list
 
-## Demo Screenshots
+## Setup Locally
+
+1. Install requirements:
+   
+   ```shell
+   pip install -r requirements.txt
+   ```
+
+
+## Screenshots
 
 ### Dashboard
 
@@ -19,29 +35,26 @@ A nifty web app to keep track of my home's monthly expenses and some personal ut
 
 ### Bill paymenet or adjustments
 
-Pay bill
 
 ![bill_payment](./readme_statics/payment_page.jpg)
+Pay Bills
 
-Adjust Bill
 
 ![bill_adjust](./readme_statics/bill_adjust_page.jpg)
+Adjust Bills
 
 ### Personal Expense
 
 ![personal_expense](./readme_statics/personal_expense_page.jpg)
 
-Also create category
 
 ![category](./readme_statics/add_catagory.jpg)
-
+Create categories too!
 
 ### Todo Lists
 
-Create separte Lists
-
 ![todo_lists](./readme_statics/todo_lists.jpg)
-Todos
+Create separate lists
 
 Add tasks and mark/unmark tasks!
 
