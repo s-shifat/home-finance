@@ -4,9 +4,9 @@ A nifty web app to keep track of my home's monthly expenses and some personal ut
 
 ## Tech stack
 
-1. [Django](https://www.djangoproject.com/)
-2. [PostgreSQL](https://www.postgresql.org/)
-3. [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+* [Django](https://www.djangoproject.com/)
+* [PostgreSQL](https://www.postgresql.org/)
+* [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
 
 Developed and hosted on Raspberry Pi 4 with vim as code editor.
 
