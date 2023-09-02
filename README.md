@@ -84,7 +84,7 @@ Developed and hosted on Raspberry Pi 4 with vim as code editor.
     ```
     ... And that's it!
 
-    [Here](https://stackpython.medium.com/how-to-start-django-project-with-a-database-postgresql-aaa1d74659d8) is a comprehensive example too.
+    [Here](https://stackpython.medium.com/how-to-start-django-project-with-a-database-postgresql-aaa1d74659d8) is another comprehensive example.
 
 ## Screenshots
 
