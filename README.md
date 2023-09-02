@@ -97,7 +97,14 @@ To configure other databases you can use [`creds`](./creds/) directory. Here's a
 
 ![dashboard](./readme_statics/dashboard-2.png)
 
+### View Contributors
+
+![Contributors](./readme_statics/contributors.png)
+
+
 ### Bill paymenet or adjustments
+
+![bill_payment](./readme_statics/bill-pay-adjust.png)
 
 ![bill_payment](./readme_statics/payment_page.jpg)
 Pay Bills
