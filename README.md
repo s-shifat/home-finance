@@ -24,7 +24,7 @@ Developed and hosted on Raspberry Pi 4
    ```shell
    pip install -r requirements.txt
    ```
-
+2. To configure your database, you can use the [`creds`](./creds) directory. For example to add PostgreSQL, create a copy of [`sqlite_db.py`](./creds/sqlite_db.py) rename to something like `postgresql_db.py`. Edit the file with proper credentials. After that, update the [`settings.py`](./home_fin/settings.py) file accordingly by importing the credentials and editing the `DB` variable.
 
 ## Screenshots
 
