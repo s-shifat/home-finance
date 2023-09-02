@@ -4,9 +4,9 @@ A nifty web app to keep track of my home's monthly expenses and some personal ut
 
 ## Tech stack
 
-1. Django
-2. PostgreSQL
-3. Bootstrap 5
+1. [Django](https://www.djangoproject.com/)
+2. [PostgreSQL](https://www.postgresql.org/)
+3. [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
 
 Developed and hosted on Raspberry Pi 4 with vim as code editor.
 
@@ -76,7 +76,7 @@ Developed and hosted on Raspberry Pi 4 with vim as code editor.
     ```python
     from creds.postgresql_db import MY_DB_CONFIG
     ```
-    Then, look for the dictionary named [`DATABASES`]() and make it look like:
+    Then, look for the dictionary named [`DATABASES`](https://github.com/s-shifat/home-finance/blob/42cf61d9496d2fa168a6027235dc416b62a07e31/home_fin/settings.py#L86) and make it look like:
     ```python
     DATABASES = {
         "default": MY_DB_CONFIG,
