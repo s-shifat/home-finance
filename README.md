@@ -99,34 +99,27 @@ To configure other databases you can use [`creds`](./creds/) directory. Here's a
 
 ### View Contributors
 
+See who contributed in the bills.
+
 ![Contributors](./readme_statics/contributors.png)
 
 
 ### Bill paymenet or adjustments
 
+Pay or adjust as you wish.
+
 ![bill_payment](./readme_statics/bill-pay-adjust.png)
 
-![bill_payment](./readme_statics/payment_page.jpg)
-Pay Bills
-
-
-![bill_adjust](./readme_statics/bill_adjust_page.jpg)
-Adjust Bills
 
 ### Personal Expense
 
-![personal_expense](./readme_statics/personal_expense_page.jpg)
+Track items by category. Create category on the fly!
 
-
-![category](./readme_statics/add_catagory.jpg)
-Create categories too!
+![personal_expense](./readme_statics/personal-expense-with-category.png)
 
 ### Todo Lists
+Create separate lists, add tasks and mark/unmark tasks!
 
-![todo_lists](./readme_statics/todo_lists.jpg)
-Create separate lists
+![todo_lists](./readme_statics/todo-all.png)
 
-Add tasks and mark/unmark tasks!
-
-![todos](./readme_statics/todos.jpg)
 
