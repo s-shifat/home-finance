@@ -8,7 +8,7 @@ A nifty web app to keep track of my home's monthly expenses and some personal ut
 * [PostgreSQL](https://www.postgresql.org/)
 * [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
 
-Developed and hosted on Raspberry Pi 4 with vim as code editor.
+Developed and hosted on Raspberry Pi 4 with [neovim](https://github.com/s-shifat/dotfiles/tree/main/nvim) as code editor.
 
 ## Features
 
