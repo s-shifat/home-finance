@@ -94,6 +94,7 @@ To configure other databases you can use [`creds`](./creds/) directory. Here's a
 ## Screenshots
 
 ### Dashboard
+<img src="./readme_statics/dashboard.jpg" alt="dashboard" height=300 width=150>
 
 ![dashboard](./readme_statics/dashboard.jpg)
 
