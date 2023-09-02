@@ -17,7 +17,7 @@ Developed and hosted on Raspberry Pi 4 with [neovim](https://github.com/s-shifat
 * Personal expenses records
 * Personal TODO list
 
-## Setup Locally
+## Setup
 
 1. Install requirements:
    
