@@ -24,13 +24,24 @@ Developed and hosted on Raspberry Pi 4 with [neovim](https://github.com/s-shifat
    git clone https://github.com/s-shifat/home-finance.git
    ```
 
-1.2. Create a virtual environment. I used [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html):
+      1.2. Create a virtual environment. I used [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html):
 
-```shell
-virtualenv venv
+    ```shell
+   # Navigate to project root.
+   cd home-finance
 
-# If you use Linux/Mac
-```
+   # Create virtual environment
+   virtualenv venv
+
+   # If you use Linux/Mac
+   source venv/bin/activate
+
+   # If you're in fish shell
+   source venv/bin/activate.fish
+
+   # If you use Windows powershell
+   .\venv\Scripts\activate.ps1
+    ```
 
 2. Install requirements:
    
@@ -57,7 +68,7 @@ To launch on a Raspberry there are [many ways](https://raspberrypi-guide.github.
     ```shell
     sudo vim /etc/rc.local
     ```
-    The last satement in this file is `exit 0`. You will add the following line just before it:
+    The last satement in this file is `exit 0`. You will add the following line just above `exit 0`:
     ```shell
     bash absolute_path_to_start.sh &
     ```
