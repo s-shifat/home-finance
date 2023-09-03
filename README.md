@@ -24,6 +24,14 @@ Developed and hosted on Raspberry Pi 4 with [neovim](https://github.com/s-shifat
    git clone https://github.com/s-shifat/home-finance.git
    ```
 
+1.2. Create a virtual environment. I used [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html):
+
+```shell
+virtualenv venv
+
+# If you use Linux/Mac
+```
+
 2. Install requirements:
    
    ```shell
