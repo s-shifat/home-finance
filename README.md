@@ -54,6 +54,8 @@ Developed and hosted on Raspberry Pi 4 with [neovim](https://github.com/s-shifat
    ```shell
    python manage.py runserver
    ```
+... That's it!
+
 ## Launch on Rasberry Pi 
 
 To launch on a Raspberry there are [many ways](https://raspberrypi-guide.github.io/programming/run-script-on-boot). I followed this one:
@@ -106,7 +108,7 @@ To configure other databases you can use [`creds`](./creds/) directory. Here's a
      "default": MY_DB_CONFIG,
  }
  ```
- ... And that's it!
+ ... And that's all!
 
  [Here](https://stackpython.medium.com/how-to-start-django-project-with-a-database-postgresql-aaa1d74659d8) is another comprehensive example.
 
